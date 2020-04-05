@@ -1,5 +1,4 @@
 <?php
-    print_r($_POST);
     $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
     $phi =floatval( filter_input(INPUT_POST, 'latitude', FILTER_SANITIZE_STRING));
     $lamda = floatval(filter_input(INPUT_POST, 'longitude', FILTER_SANITIZE_STRING));
@@ -79,12 +78,5 @@
         <input id="lamda" name="longitude" placeholder="kraadi 0 meridiaanist"><br>
         <button name="action" value="change_loc">Hangi ilma andmed</button>
     </form>
-    <?php
-    echo $phi;
-    echo "<br>";
-    echo $lamda;
-    echo "<br>";
-    echo $url;
-    ?>
 </body>
 </html>
