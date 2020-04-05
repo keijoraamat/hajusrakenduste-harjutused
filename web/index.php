@@ -5,7 +5,7 @@
     $lamda = floatval(filter_input(INPUT_POST, 'longitude', FILTER_SANITIZE_STRING));
     $fileName = './cache.json';
     $key=json_decode(file_get_contents('./key.json'));
-    $api_key = $key->key;
+    $api_key = getenv('API_KEY');
     define("CACHE_TIME", 300);
     if (isset($action)) {
         $error = [];
@@ -20,26 +20,26 @@
 
             $cacheTime = 300;
             $content = file_get_contents($url);
-        
+
                 $file = fopen($fileName, 'w');
                 fwrite($file, $content);
                 fclose($file);
             $json = json_decode($content);
             }
-            
+
     } else {
         $url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID='.$api_key.'&lat=58.2550&lon=22.4919&units=metric';
 
-        
+
             if ( file_exists($fileName) && (time() - filemtime($fileName) < CACHE_TIME) ) {
                 $content = file_get_contents($fileName);
             } else {
                 $content = file_get_contents($url);
-        
+
                 $file = fopen($fileName, 'w');
                 fwrite($file, $content);
                 fclose($file);
-        
+
             $json = json_decode($content);
         }
     }
@@ -81,10 +81,10 @@
         <input id="lamda" name="longitude" placeholder="kraadi 0 meridiaanist"><br>
         <button name="action" value="change_loc">Hangi ilma andmed</button>
     </form>
-    <?php  
+    <?php
     echo $phi;
     echo "<br>";
-    echo $lamda; 
+    echo $lamda;
     echo "<br>";
     echo $url;
     ?>
