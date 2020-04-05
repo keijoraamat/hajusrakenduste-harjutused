@@ -3,9 +3,7 @@
     $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
     $phi =floatval( filter_input(INPUT_POST, 'latitude', FILTER_SANITIZE_STRING));
     $lamda = floatval(filter_input(INPUT_POST, 'longitude', FILTER_SANITIZE_STRING));
-    $fileName = './cache.json';
-    $key=json_decode(file_get_contents('./key.json'));
-    $api_key = getenv('API_KEY');
+    $api_key = getenv('api_key');
     define("CACHE_TIME", 300);
     if (isset($action)) {
         $error = [];
