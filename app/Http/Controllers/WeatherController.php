@@ -16,17 +16,16 @@ class WeatherController extends Controller
     $url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID='.$api_key.'&lat=58.2550&lon=22.4919&units=metric';
 
 
-            if ( file_exists($fileName) && (time() - filemtime($fileName) < CACHE_TIME) ) {
-                $content = file_get_contents($fileName);
-            } else {
-                $content = file_get_contents($url);
-
-                $file = fopen($fileName, 'w');
-                fwrite($file, $content);
-                fclose($file);
-
+            //if ( file_exists($fileName) && (time() - filemtime($fileName) < CACHE_TIME) ) {
+            //    $content = file_get_contents($fileName);
+            //} else {
+            //    $content = file_get_contents($url);
+            //    $file = fopen($fileName, 'w');
+            //    fwrite($file, $content);
+            //    fclose($file);
+            $content = file_get_contents($url);
             $json = json_decode($content);
-        }
+        //}
 
 
     //var_dump($json->list[0]->dt_txt);
