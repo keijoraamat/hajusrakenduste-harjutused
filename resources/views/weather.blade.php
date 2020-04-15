@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+@include('header')
   <h3>{{$name}} ilm {{$dt_txt}}</h3> <br>
   <img src="http://openweathermap.org/img/wn/{{$icon}}@2x.png"><br>
   Temperatuur
