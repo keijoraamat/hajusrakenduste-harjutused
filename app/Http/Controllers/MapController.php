@@ -20,7 +20,7 @@ class MapController extends Controller
       $marker ->lng = $clikedPoint->lng;
       $marker ->description = $clikedPoint->description;
       $marker->save();
-      return $this->index();
+      return redirect('/map');
     }
 
     public function getMarkers() {

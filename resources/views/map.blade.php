@@ -54,6 +54,8 @@
 
             document.getElementById("lat").value = lat;
             document.getElementById("lng").value = lng;
+            document.getElementById("name").value = '';
+            document.getElementById("description").value = '';
 
         });
 
@@ -78,7 +80,7 @@
             title: name
         });
         let infowindow = new google.maps.InfoWindow({
-            content: place.description
+            content: '<b>'+place.name+'</b><br>'+place.description
          });
         marker.addListener('click', function() {
             infowindow.open(map, marker);
