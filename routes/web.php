@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'IndexController');
+Route::get('/', 'HomeController');
 Route::get('/weather', 'WeatherController');
 Route::get('/map', 'MapController@index');
 Route::post('/save', 'MapController@addMarker');
