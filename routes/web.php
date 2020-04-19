@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController');
 Route::get('/weather', 'WeatherController');
 Route::get('/map', 'MapController@index');
+Route::post('/save', 'MapController@addMarker');
+Route::get('/map/markers', 'MapController@getMarkers');
+Route::get('/saveloc', 'MapController@addLocation');
+Route::get('/locs', 'MapController@showTable');
