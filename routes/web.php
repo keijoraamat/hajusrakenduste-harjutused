@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MapController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,7 @@ Route::post('/save', 'MapController@addMarker');
 Route::get('/map/markers', 'MapController@getMarkers');
 Route::get('/saveloc', 'MapController@addLocation');
 Route::get('/locs', 'MapController@showTable');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
