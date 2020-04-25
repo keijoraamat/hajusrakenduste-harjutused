@@ -1,5 +1,3 @@
-
-
             @if (Route::has('login'))
                 <div class="top-right links">
                 <a href="{{ url('/weather') }}">1, hetke ilm</a>
