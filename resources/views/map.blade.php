@@ -81,6 +81,7 @@
 <form action="/save" method="post">
 {{ csrf_field() }}
     <input id="name" name="name" placeholder="Lisa pealkiri"><br>
+    <input type="hidden" id="id">
     <input id="lat" name="lat" placeholder="Laiuskraad"><br>
     <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
     <textarea id="description" name="description"></textarea><br>
@@ -137,6 +138,7 @@
     }
 
     function addMarker(place) {
+        console.log(place.id);
         let marker = new google.maps.Marker({
             position: place,
             draggable: true,
@@ -156,6 +158,8 @@
             document.getElementById("description").value = place.description;
             document.getElementById("lat").value = lat;
             document.getElementById("lng").value = lng;
+            console.log(place.id);
+            document.getElementById("id").value = place.id;
 
         });
     }

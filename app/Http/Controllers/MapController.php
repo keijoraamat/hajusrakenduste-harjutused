@@ -29,6 +29,7 @@ class MapController extends Controller
       $markers = [];
       foreach ($locations as $loc) {
         $marker=[];
+        $marker['id']=$loc->id;
         $marker['name']=$loc->name;
         $marker['lat']=floatval($loc->lat);
         $marker['lng']=floatval($loc->lng);
