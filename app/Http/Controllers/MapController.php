@@ -14,6 +14,7 @@ class MapController extends Controller
     }
 
     public function addMarker(Request $clikedPoint) {
+      dd($clikedPoint);
       $marker = new Marker();
       $marker ->name = $clikedPoint->name;
       $marker ->lat =  $clikedPoint->lat;

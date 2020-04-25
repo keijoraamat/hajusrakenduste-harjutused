@@ -1,10 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -15,11 +12,11 @@ class LoginController extends Controller
         $hash = password_hash("1234", PASSWORD_BCRYPT, $options);
         return password_verify($password, $hash);
     }
-    public function logIn (Request $request) {
-        $hasRights = false;
-        if ($this->verifyPassword($request->password)){
+    public function loggIn (Request $request) {
+        dd($request);
+        if ($request) {
             $hasRights = true;
         }
-        return redirect('/map', $hasRights);
+        //return redirect('/map', $hasRights);
     }
 }
