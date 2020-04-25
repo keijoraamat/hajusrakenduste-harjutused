@@ -5,11 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
-        #map {
-            height: 100%;
-        }
+
         /* Optional: Makes the sample page fill the window. */
         html, body {
             height: 80%;
@@ -17,6 +13,68 @@
             padding: 0;
         }
     </style>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 80%;
+                margin: 15;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            #map {
+                height: 100%;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+                margin-top: 200px;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
 </head>
 <body>
 @include('header')
@@ -26,7 +84,13 @@
     <input id="lat" name="lat" placeholder="Laiuskraad"><br>
     <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
     <textarea id="description" name="description"></textarea><br>
-    <button name="action" value="add">Salvesta</button>
+    @if (Route::has('login'))
+        @auth
+        <button name="action" value="add">Salvesta</button>
+          @else
+               <a href="{{ route('login') }}">Salvestamiseks logi sisse</a>
+         @endauth
+    @endif
 </form>
 
 <hr>
