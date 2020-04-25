@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Harjutused</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -42,6 +42,7 @@
 
             .content {
                 text-align: center;
+                margin-top: 200px;
             }
 
             .title {
@@ -64,36 +65,53 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        <div class="flex-center position-ref full-height">
+        @include('header')
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            
+            <h2><a href="{{ url('/weather') }}">1. Vabalt valitud ilma API</a></h2>
+        <ul>
+            <li>Ühendada API-ga ja saada info (näiteks formaat JSON)</li>
+            <li>Andmed cache-ida</li>
+            <li>Väljastada info (võimalusel koos pildiga)</li>
+            <li>Näideks: <a href="https://openweathermap.org/price" target="_blank">https://openweathermap.org/price</a></li>
+        </ul>
+        <h2>2. Google Maps API</h2>
+        <ul>
+            <li>Luua tabel markers (id, name, latitude, longitude, description, added, edited)</li>
+            <li>CRUD markerile. (name, latitude, longitude, description)</li>
+            <li>Luua google map</li>
+            <li>Lisada markerid map-ile</li>
+            <li>Click mapil võimaldab salvestada markerit</li>
+            <li>Tutorial: <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a></li>
+        </ul>
+        <h2>3. Laravel - projekti loomine Uudised. Kommentaaride CRUD</h2>
+        <ul>
+            <li>Luua project Blog</li>
+            <li>Luua audentimine</li>
+            <li>Luua migration create_blog_table (title, description)</li>
+            <li>CRUD blog-ile</li>
+            <li>Võimalus lisada kommentaare. Ning saab kustutada (admin).</li>
+            <li>Tutorial: <a href="https://laracast.com" target="_blank">https://laracast.com</a></li>
+        </ul>
+        <h2>4. Pangalingid - luua ostukorvi</h2>
+        <ul>
+            <li>Luua toote valiku leht (vähemalt 9 toodet, saab valida kogust)</li>
+            <li>Luua ostukorv. Saab muuta koguseid ja kustutada tooteid</li>
+            <li>Luua maksmise eelne leht (eesnimi, perenimi, email, telefon), lingid mine maksma</li>
+            <li>Maksmisest tagasi tulles vastavalt tulemusele kas tühjendada ostukorv või mitte.</li>
+            <li>Keskond: <a href="https://github.com/BitWeb/Pangalink.net">Github</a>; <a href="http://janek.itmajakas.ee/pmg/pangalink-net_amd64.exe" target="_blank">Windows</a></li>
+        </ul>
+        <h2>5. Vabalt valida lemmik teema ja luua sellele API</h2>
+        <ul>
+            <li>Luua tabel my_favorite_subject (id, title, image, description, +2 teema kohast välja)</li>
+            <li>Luua ankeet (title, description, image, +2 teema kohast välja)</li>
+            <li>Luua väljund sisestatud teemades. (JSON) Väljund peab sisaldame vähemalt ühte parameetrit (limit)</li>
+            <li>Luua leht, mis loeb kaas õpilaste teemasid.</li>
+            <li>Cache iga teema kohta</li>        
+        </ul>
             </div>
         </div>
     </body>

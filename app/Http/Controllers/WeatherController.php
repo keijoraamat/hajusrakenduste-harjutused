@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class WeatherController extends Controller
 {
-  public function index() {
+  public function __invoke() {
     $api_key = getenv('api_key');
     define("CACHE_TIME", 300);
     $fileName='./cache.json';
