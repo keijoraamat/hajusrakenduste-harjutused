@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController');
+Route::get('/', function() {
+    return view('welcome');
+});
 Route::get('/weather', 'WeatherController');
 Route::get('/map', 'MapController@index');
 Route::post('/save', 'MapController@addMarker');
@@ -23,7 +25,10 @@ Route::post('/login', 'LoginController@logIn');
 Route::get('/map/markers', 'MapController@getMarkers');
 Route::get('/saveloc', 'MapController@addLocation');
 Route::get('/locs', 'MapController@showTable');
+Route::get('logout', 'UserController@logout');
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

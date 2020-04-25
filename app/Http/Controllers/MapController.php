@@ -40,17 +40,17 @@ class MapController extends Controller
     }
 
 
-    public function showTable() {
-      $locations = DB::table('markers')->select('lat','lng')->get();
+    //public function showTable() {
+      //$locations = DB::table('markers')->select('lat','lng')->get();
       // not so nice workaround, because laravel want's to convert float to string in model.
-      $markers = [];
-      foreach ($locations as $loc) {
-        $marker=[];
-        $marker['lat']=floatval($loc->lat);
-        $marker['lng']=floatval($loc->lng);
-        $markers[] = $marker;
-      }
-      return json_encode($markers); 
-    }
+      //$markers = [];
+      //foreach ($locations as $loc) {
+        //$marker=[];
+        //$marker['lat']=floatval($loc->lat);
+        //$marker['lng']=floatval($loc->lng);
+        //$markers[] = $marker;
+      //}
+      //return json_encode($markers); 
+    //}
     
 }
