@@ -27,6 +27,7 @@ Route::get('/saveloc', 'MapController@addLocation');
 Route::get('/locs', 'MapController@showTable');
 Route::get('logout', 'UserController@logout');
 Route::get('/edit', 'MapController@editMarker');
+Route::get('/bread', 'breadController@index');
 
 Auth::routes([
     'register' => false,
