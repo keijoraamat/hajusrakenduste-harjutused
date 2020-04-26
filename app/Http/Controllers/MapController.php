@@ -13,13 +13,14 @@ class MapController extends Controller
       return view('map');
     }
 
-    public function addMarker(Request $clikedPoint) {
-      $marker = new Marker();
-      $marker ->name = $clikedPoint->name;
-      $marker ->lat =  $clikedPoint->lat;
-      $marker ->lng = $clikedPoint->lng;
-      $marker ->description = $clikedPoint->description;
-      $marker->save();
+    public function changeMarker(Request $clikedPoint) {
+      if (($clikedPoint->has('id')) and ($clikedPoint->action == 'add')) {
+        $this->updateMarker($clikedPoint);
+      } elseif (($clikedPoint->has('id'))and ($clikedPoint->action == 'delete')) {
+        $this->deleteMarker($clikedPoint);
+      } elseif ($clikedPoint->action == 'add'){
+        $this->createMarker($clikedPoint);
+      }
       return redirect('/map');
     }
 
@@ -39,18 +40,30 @@ class MapController extends Controller
       return json_encode($markers); 
     }
 
+    public function updateMarker(Request $request){
+      $newMarker = Marker::find($request->id);
+      $newMarker->lat = $request->lat;
+      $newMarker->lng = $request->lng;
+      $newMarker->name = $request->name;
+      $newMarker->description = $request->description;
+      $newMarker->save();
+      return redirect('/map');
+    }
 
-    //public function showTable() {
-      //$locations = DB::table('markers')->select('lat','lng')->get();
-      // not so nice workaround, because laravel want's to convert float to string in model.
-      //$markers = [];
-      //foreach ($locations as $loc) {
-        //$marker=[];
-        //$marker['lat']=floatval($loc->lat);
-        //$marker['lng']=floatval($loc->lng);
-        //$markers[] = $marker;
-      //}
-      //return json_encode($markers); 
-    //}
-    
+    public function deleteMarker(Request $request){
+      if (($request->id)<0) {
+        Marker::where('id', $request->id)->delete();
+      }
+      return redirect('/map');
+    }
+
+    public function createMarker(Request $request){
+      $marker = new Marker();
+      $marker ->name = $request->name;
+      $marker ->lat =  $request->lat;
+      $marker ->lng = $request->lng;
+      $marker ->description = $request->description;
+      $marker->save();
+      return redirect('/map');
+    }
 }

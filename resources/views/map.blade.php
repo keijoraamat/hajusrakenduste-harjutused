@@ -78,16 +78,17 @@
 </head>
 <body>
 @include('header')
-<form action="/save" method="post">
+<form action="/map/change" method="post">
 {{ csrf_field() }}
-    <input id="name" name="name" placeholder="Lisa pealkiri"><br>
-    <input type="hidden" id="id">
-    <input id="lat" name="lat" placeholder="Laiuskraad"><br>
-    <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
-    <textarea id="description" name="description"></textarea><br>
+    Pealkiri <input id="name" name="name" placeholder="Lisa pealkiri"><br>
+    <input type="hidden" id="id" name="id">
+    Laius <input id="lat" name="lat" placeholder="Laiuskraad"><br>
+    Pikkus <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
+    Kirjeldus <textarea id="description" name="description"></textarea><br>
     @if (Route::has('login'))
         @auth
         <button name="action" value="add">Salvesta</button>
+        <button name="action" value="delete">Kustuta</button>
           @else
                <a href="{{ route('login') }}">Salvestamiseks logi sisse</a>
          @endauth
@@ -121,6 +122,7 @@
             document.getElementById("lng").value = lng;
             document.getElementById("name").value = '';
             document.getElementById("description").value = '';
+            document.getElementById("id").value = '';
 
         });
 
@@ -158,7 +160,6 @@
             document.getElementById("description").value = place.description;
             document.getElementById("lat").value = lat;
             document.getElementById("lng").value = lng;
-            console.log(place.id);
             document.getElementById("id").value = place.id;
 
         });
