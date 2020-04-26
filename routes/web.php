@@ -27,7 +27,11 @@ Route::get('/saveloc', 'MapController@addLocation');
 Route::get('/locs', 'MapController@showTable');
 Route::get('logout', 'UserController@logout');
 Route::get('/edit', 'MapController@editMarker');
-Route::get('/bread', 'breadController@index');
+Route::get('/bread', 'BreadController@index');
+Route::get('/bread/{id}', 'BreadController@edit');
+Route::get('/newbread', 'BreadController@create');
+Route::post('/bread/add', 'BreadController@add');
+Route::post('/bread/update', 'BreadController@update');
 
 Auth::routes([
     'register' => false,
