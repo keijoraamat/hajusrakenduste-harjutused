@@ -15,14 +15,6 @@
         <div class="flex-center position-ref full-height">
         @include('header')
             <div class="content">
-                <ul>
-                    <h2><a href="{{ url('/api') }}">5. Vabalt valida lemmik teema ja luua sellele API</a></h2>
-                    <li>Luua tabel my_favorite_subject (id, title, image, description, +2 teema kohast välja)</li>
-                    <li>Luua ankeet (title, description, image, +2 teema kohast välja)</li>
-                    <li>Luua väljund sisestatud teemades. (JSON) Väljund peab sisaldame vähemalt ühte parameetrit (limit)</li>
-                    <li>Luua leht, mis loeb kaas õpilaste teemasid.</li>
-                    <li>Cache iga teema kohta</li>        
-                </ul>
                 <a href="/newbread" class="btn btn-primary">Lisa</a>
                 <table class="table">
                 <thead class="thead-light">

@@ -74,4 +74,8 @@ class BreadController extends Controller
         $bread->save(); 
     }
 
+    public function allBreadsv1($limit) {
+        $breads = Bread::take($limit)->get();
+        return $breads->toJson();
+    }
 }
