@@ -16,7 +16,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             html, body {
@@ -28,66 +28,24 @@
                 margin: 15;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
             #map {
                 height: 100%;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-                margin-top: 200px;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
             }
         </style>
 </head>
 <body>
 @include('header')
-<form action="/save" method="post">
+<form action="/map/change" method="post">
 {{ csrf_field() }}
-    <input id="name" name="name" placeholder="Lisa pealkiri"><br>
-    <input type="hidden" id="id">
-    <input id="lat" name="lat" placeholder="Laiuskraad"><br>
-    <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
-    <textarea id="description" name="description"></textarea><br>
+    Pealkiri <input id="name" name="name" placeholder="Lisa pealkiri"><br>
+    <input type="hidden" id="id" name="id">
+    Laius <input id="lat" name="lat" placeholder="Laiuskraad"><br>
+    Pikkus <input id="lng" name="lng" placeholder="Pikkuskraad"><br>
+    Kirjeldus <textarea id="description" name="description"></textarea><br>
     @if (Route::has('login'))
         @auth
         <button name="action" value="add">Salvesta</button>
+        <button name="action" value="delete">Kustuta</button>
           @else
                <a href="{{ route('login') }}">Salvestamiseks logi sisse</a>
          @endauth
@@ -121,6 +79,7 @@
             document.getElementById("lng").value = lng;
             document.getElementById("name").value = '';
             document.getElementById("description").value = '';
+            document.getElementById("id").value = '';
 
         });
 
@@ -158,7 +117,6 @@
             document.getElementById("description").value = place.description;
             document.getElementById("lat").value = lat;
             document.getElementById("lng").value = lng;
-            console.log(place.id);
             document.getElementById("id").value = place.id;
 
         });

@@ -8,61 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-                margin-top: 200px;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
 
@@ -78,7 +24,7 @@
             <li>Väljastada info (võimalusel koos pildiga)</li>
             <li>Näideks: <a href="https://openweathermap.org/price" target="_blank">https://openweathermap.org/price</a></li>
         </ul>
-        <h2>2. Google Maps API</h2>
+        <h2><a href="{{ url('/map') }}">2. Google Maps API</a></h2>
         <ul>
             <li>Luua tabel markers (id, name, latitude, longitude, description, added, edited)</li>
             <li>CRUD markerile. (name, latitude, longitude, description)</li>
@@ -104,7 +50,7 @@
             <li>Maksmisest tagasi tulles vastavalt tulemusele kas tühjendada ostukorv või mitte.</li>
             <li>Keskond: <a href="https://github.com/BitWeb/Pangalink.net">Github</a>; <a href="http://janek.itmajakas.ee/pmg/pangalink-net_amd64.exe" target="_blank">Windows</a></li>
         </ul>
-        <h2>5. Vabalt valida lemmik teema ja luua sellele API</h2>
+        <h2><a href="{{ url('/bread') }}">5. Vabalt valida lemmik teema ja luua sellele API</a></h2>
         <ul>
             <li>Luua tabel my_favorite_subject (id, title, image, description, +2 teema kohast välja)</li>
             <li>Luua ankeet (title, description, image, +2 teema kohast välja)</li>
