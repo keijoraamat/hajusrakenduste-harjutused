@@ -89,18 +89,18 @@ class BreadController extends Controller
             fwrite($file, json_encode($breads));
             fclose($file);
           }
-          foreach (json_decode($breads) as $key) {
+          $decodedCache = json_decode($breads);
+          for ($i=0; $i < $limit; $i++) { 
             $bread=[];
             $bread['id'] =$i;
-            $bread['title'] = $key->title; 
-            $bread['img_url'] = $prodServer . '/'. $imgDir . '/' . $key->img_url;
-            $bread['description'] = $key->decription; 
-            $bread['type'] = $key->type;
-            $bread['origin'] = $key->origin;
+            $bread['title'] = $decodedCache[$i]->title; 
+            $bread['img_url'] = $prodServer . '/'. $imgDir . '/' . $decodedCache[$i]->img_url;
+            $bread['description'] = $decodedCache[$i]->decription; 
+            $bread['type'] = $decodedCache[$i]->type;
+            $bread['origin'] = $decodedCache[$i]->origin;
             $serviceableBreads[] = $bread;
-            $i++; 
-          }        
+          }     
         return json_encode($serviceableBreads);
     }
-    
+
 }
