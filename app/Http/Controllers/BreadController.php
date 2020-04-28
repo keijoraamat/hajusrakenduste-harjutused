@@ -24,9 +24,9 @@ class BreadController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileExt = $file->getClientOriginalExtension();
-            $fileName = $request->title . '.' . $fileExt;
-            $file->move('uploads/bread_images', $fileName);
-            $bread->img_url = $fileName;
+            $breadCache = $request->title . '.' . $fileExt;
+            $file->move('uploads/bread_images', $breadCache);
+            $bread->img_url = $breadCache;
         } else {
             $defaultImage = "kakuke.jpg";
             $bread->img_url = $defaultImage;
@@ -67,15 +67,40 @@ class BreadController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileExt = $file->getClientOriginalExtension();
-            $fileName = $request->title . '.' . $fileExt;
-            $file->move('uploads/bread_images', $fileName);
-            $bread->img_url = $fileName;
+            $breadCache = $request->title . '.' . $fileExt;
+            $file->move('uploads/bread_images', $breadCache);
+            $bread->img_url = $breadCache;
         } 
         $bread->save(); 
     }
 
     public function allBreadsv1($limit) {
-        $breads = Bread::take($limit)->get();
-        return $breads->toJson();
+        define("CACHE_TIME", 7200);
+        $prodServer = "hajusrakendusete-harjutused.herokuapp.com";
+        $imgDir = "uploads/bread_images";
+        $breadCache='./bread_cache.json';
+        $serviceableBreads = [];
+        $i = 1;
+        if ( file_exists($breadCache) && (time() - filemtime($breadCache) < CACHE_TIME) ) {
+            $breads = file_get_contents($breadCache);
+          } else {
+            $breads = Bread::take($limit)->get();
+            $file = fopen($breadCache, 'w');
+            fwrite($file, json_encode($breads));
+            fclose($file);
+          }
+          foreach (json_decode($breads) as $key) {
+            $bread=[];
+            $bread['id'] =$i;
+            $bread['title'] = $key->title; 
+            $bread['img_url'] = $prodServer . '/'. $imgDir . '/' . $key->img_url;
+            $bread['description'] = $key->decription; 
+            $bread['type'] = $key->type;
+            $bread['origin'] = $key->origin;
+            $serviceableBreads[] = $bread;
+            $i++; 
+          }        
+        return json_encode($serviceableBreads);
     }
+    
 }
