@@ -89,6 +89,9 @@ class BreadController extends Controller
             fclose($file);
           }
           $decodedCache = json_decode($breads);
+          if (Bread::count()<$limit ) {
+              $limit = Bread::count();
+          }
           for ($i=0; $i < $limit; $i++) { 
             $bread=[];
             $bread['id'] =$i;
