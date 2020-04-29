@@ -75,7 +75,7 @@ class BreadController extends Controller
     }
 
     public function allBreadsv1($limit) {
-        define("CACHE_TIME", 72);
+        define("CACHE_TIME", 7200 );
         $prodServer = "hajusrakendusete-harjutused.herokuapp.com";
         $imgDir = "uploads/bread_images";
         $breadCache='./bread_cache.json';
