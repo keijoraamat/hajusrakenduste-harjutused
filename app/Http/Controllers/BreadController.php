@@ -80,7 +80,6 @@ class BreadController extends Controller
         $imgDir = "uploads/bread_images";
         $breadCache='./bread_cache.json';
         $serviceableBreads = [];
-        $i = 1;
         if ( file_exists($breadCache) && (time() - filemtime($breadCache) < CACHE_TIME) ) {
             $breads = file_get_contents($breadCache);
           } else {
