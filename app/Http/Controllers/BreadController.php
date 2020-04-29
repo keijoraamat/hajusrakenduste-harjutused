@@ -84,7 +84,7 @@ class BreadController extends Controller
         if ( file_exists($breadCache) && (time() - filemtime($breadCache) < CACHE_TIME) ) {
             $breads = file_get_contents($breadCache);
           } else {
-            $breads = Bread::take($limit)->get();
+            $breads = Bread::all();
             $file = fopen($breadCache, 'w');
             fwrite($file, json_encode($breads));
             fclose($file);
