@@ -33,6 +33,7 @@ Route::get('/newbread', 'BreadController@create');
 Route::post('/bread/add', 'BreadController@add');
 Route::post('/bread/update', 'BreadController@update');
 Route::get('/api/v1/limit={amount}', 'BreadController@allBreadsv1');
+Route::get('/store', 'StoreController@index');
 
 Auth::routes([
     'register' => false,

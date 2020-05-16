@@ -42,7 +42,7 @@
             <li>Võimalus lisada kommentaare. Ning saab kustutada (admin).</li>
             <li>Tutorial: <a href="https://laracast.com" target="_blank">https://laracast.com</a></li>
         </ul>
-        <h2>4. Pangalingid - luua ostukorvi</h2>
+        <h2><a href="{{ url('/store') }}">4. Pangalingid - luua ostukorvi</a></h2>
         <ul>
             <li>Luua toote valiku leht (vähemalt 9 toodet, saab valida kogust)</li>
             <li>Luua ostukorv. Saab muuta koguseid ja kustutada tooteid</li>
