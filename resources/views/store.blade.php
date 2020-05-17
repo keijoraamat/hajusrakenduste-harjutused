@@ -18,29 +18,41 @@
 <body>
 @include('header')
 <div class="content">
-    <div class="d-flexi p-2 store-table">
-        <table class="table">
-            <tbody>
+    <div class="p-2 store-table">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Artikkel</th>
+                        <th scope="col">Kood</th>
+                        <th>Artikkel</th>
                         <th>Hind</th>
                         <th>Kogus</th>
-                        <th></th>
+                        <th>Toiming</th>
                     </tr>
                 </thead>
-                @forelse ($items as $item => $price)
-                <tr> 
-                    <th scope="row"> {{ $item }}</th>
-                    <th>{{ $price }}</th>
-                    <th><input type="number" placeholder="0"></th>
-                    <th><a href="#" class="btn">Lisa korvi</a></th>
-                </tr>
+                <tbody>                
+                    @forelse ($items as $item)  
+                    <form action="/store/add" method="POST">
+                        @csrf
+                        <tr id="good"> 
+                            <td> {{ $item[0] }}<input type="hidden" name="id" value="{{$item[0]}}"></td>
+                            <td> {{ $item[1] }}</td>
+                            <td>{{ $item[2] }}</td>
+                            <td><input type="number" placeholder="0" name="amount" id="amount"></td>
+                            <td><button class="btn btn-light" id="add">lisa</button></td>
+                        </form>                             
+                        </tr>
                 @empty
                         <p>Ladu tühi! :(</p>
-                @endforelse  
+                @endforelse 
+                
             </tbody>
         </table>
+        @if(Session::has('cart'))
+            <p class="alert">Ostukorvis on asju!</p>
+        @endif
+        <div>
+            <a href="/store/cart" class="btn btn-warning" name="action">Suundu ostukorvi</a>
+        </div>
     </div>
 </div>
 </body>
