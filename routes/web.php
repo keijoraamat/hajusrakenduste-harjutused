@@ -34,6 +34,12 @@ Route::post('/bread/add', 'BreadController@add');
 Route::post('/bread/update', 'BreadController@update');
 Route::get('/api/v1/limit={amount}', 'BreadController@allBreadsv1');
 Route::get('/store', 'StoreController@index');
+Route::post('/store/add', 'StoreController@addtocart');
+Route::post('/store/discardcart', 'StoreController@discardCart');
+Route::get('/store/cart', 'StoreController@cart');
+Route::get('/store/payment', 'StoreController@pay');
+Route::post('/store/payment/success', 'StoreController@success');
+Route::post('/store/payment/cancel', 'StoreController@cancel');
 
 Auth::routes([
     'register' => false,
