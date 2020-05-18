@@ -85,6 +85,7 @@ class StoreController extends Controller
 
     // STEP 1. Setup private key
     // =========================
+    # Laravel couldn't handle reding key from string -> reading from file then
     $private_key = openssl_pkey_get_private( file_get_contents('./user_key.pem') );
         
         // STEP 2. Define payment information
@@ -113,8 +114,8 @@ class StoreController extends Controller
                 "VK_REF"         => "1234561",
                 "VK_LANG"        => "EST",
                 "VK_MSG"         => "Torso Tiger",
-                "VK_RETURN"      => "http://localhost/project/5ec176fcb469c4d1d549e6aa?payment_action=success",
-                "VK_CANCEL"      => "http://localhost/project/5ec176fcb469c4d1d549e6aa?payment_action=cancel",
+                "VK_RETURN"      => "http://localhost:8001/store/payment/success",
+                "VK_CANCEL"      => "http://localhost:8001/store/payment/cancel",
                 "VK_DATETIME"    => date(DATE_ISO8601),
                 "VK_ENCODING"    => "utf-8",
         );
@@ -153,5 +154,20 @@ class StoreController extends Controller
         // STEP 5. Generate POST form with payment data that will be sent to the bank
         // ==========================================================================
         return view('pay')->withFields($fields);
+    }
+
+    public function success(Request $request){
+        # need session key from laravel to be sent from bank
+        # disableling crlf control for the route leading here
+        if (session()->has('cart')) {
+            session()->forget('cart');
+        }
+        return view('success');
+    }
+
+    public function cancel(){
+        # need session key from laravel to be sent from bank
+        # disableling crlf control for the route leading here
+        return view('cancel');
     }
 }

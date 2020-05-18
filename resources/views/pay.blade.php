@@ -27,26 +27,27 @@
         <p>Makse teostamise näidisrakendus <strong>"Ipitsa"</strong></p>
 
         <form method="post" action="http://localhost/banklink/ipizza">
+            @csrf
             <!-- include all values as hidden form fields -->
-<?php foreach($fields as $key => $val):?>
-            <input type="hidden" name="<?php echo $key; ?>" value="<?php echo htmlspecialchars($val); ?>" />
-<?php endforeach; ?>
+            <?php foreach($fields as $key => $val):?>
+                <input type="hidden" name="<?php echo $key; ?>" value="<?php echo htmlspecialchars($val); ?>" />
+            <?php endforeach; ?>
 
             <!-- draw table output for demo -->
             <table>
-<?php foreach($fields as $key => $val):?>
-                <tr>
-                    <td><strong><code><?php echo $key; ?></code></strong></td>
-                    <td><code><?php echo htmlspecialchars($val); ?></code></td>
-                </tr>
-<?php endforeach; ?>
+                <?php foreach($fields as $key => $val):?>
+                    <tr>
+                        <td><strong><code><?php echo $key; ?></code></strong></td>
+                        <td><code><?php echo htmlspecialchars($val); ?></code></td>
+                    </tr>
+                <?php endforeach; ?>
 
                 <!-- when the user clicks "Edasi panga lehele" form data is sent to the bank -->
                 <tr><td colspan="2"><input type="submit" value="Edasi panga lehele" /></td></tr>
             </table>
         </form>
 
-        
+
 </div>
 </body>
 </html>

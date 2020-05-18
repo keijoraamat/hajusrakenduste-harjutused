@@ -38,6 +38,8 @@ Route::post('/store/add', 'StoreController@addtocart');
 Route::post('/store/discardcart', 'StoreController@discardCart');
 Route::get('/store/cart', 'StoreController@cart');
 Route::get('/store/payment', 'StoreController@pay');
+Route::post('/store/payment/success', 'StoreController@success');
+Route::post('/store/payment/cancel', 'StoreController@cancel');
 
 Auth::routes([
     'register' => false,
