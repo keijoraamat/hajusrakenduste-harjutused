@@ -33,7 +33,7 @@
             <li>Click mapil võimaldab salvestada markerit</li>
             <li>Tutorial: <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a></li>
         </ul>
-        <h2>3. Laravel - projekti loomine Uudised. Kommentaaride CRUD</h2>
+        <h2><a href="http://harjutus-3-blogi.herokuapp.com/"> 3. Laravel - projekti loomine Uudised. Kommentaaride CRUD</a></h2>
         <ul>
             <li>Luua project Blog</li>
             <li>Luua audentimine</li>
