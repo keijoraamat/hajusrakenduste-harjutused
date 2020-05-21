@@ -49,10 +49,12 @@
         </table>
         @if(Session::has('cart'))
             <p class="alert">Ostukorvis on asju!</p>
-        @endif
-        <div>
-            <a href="/store/cart" class="btn btn-warning" name="action">Suundu ostukorvi</a>
-        </div>
+            <div>
+                <a href="/store/cart" class="btn btn-warning" name="action">Suundu ostukorvi</a>
+            </div>
+        @else 
+            <p>Ostukorv on tühi.</p>
+        @endif       
     </div>
 </div>
 </body>
