@@ -15,7 +15,7 @@
         <div class="flex-center position-ref full-height">
         @include('header')
 
-            <div class="content">
+            <div class="content p-2">
             
             <h2><a href="{{ url('/weather') }}">1. Vabalt valitud ilma API</a></h2>
         <ul>
