@@ -35,6 +35,7 @@
 </head>
 <body>
 @include('header')
+<div class="content p-2">
 <form action="/map/change" method="post">
 {{ csrf_field() }}
     Pealkiri <input id="name" name="name" placeholder="Lisa pealkiri"><br>
@@ -53,8 +54,9 @@
 </form>
 
 <hr>
-
+</div>
 <div id="map"></div>
+
 <script>
     var map;
     function initMap() {

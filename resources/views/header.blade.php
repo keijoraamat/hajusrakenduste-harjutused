@@ -3,7 +3,7 @@
                 <a href="{{ url('/') }}">Algus</a>
                 <a href="{{ url('/weather') }}">Hetke ilm</a>
                 <a href="{{ url('/map') }}">Kaart</a>
-                <a href="{{ url('/bread') }}">API</a>
+                <a href="{{ url('/api') }}">API</a>
                 <a href="{{ url('/store') }}">Ostukorv</a>
                     @auth
                         <a href="{{ url('/logout') }}">Logi välja</a>

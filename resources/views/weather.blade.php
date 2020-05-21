@@ -11,7 +11,7 @@
 </head>
 <body>
 @include('header')
-<div class="content">
+<div class="content p-2">
   <h3>{{$name}} ilm {{$dt_txt}}</h3> <br>
   <img src="http://openweathermap.org/img/wn/{{$icon}}@2x.png"><br>
   <div class="flex-center">

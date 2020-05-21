@@ -40,6 +40,7 @@ Route::get('/store/cart', 'StoreController@cart');
 Route::get('/store/payment', 'StoreController@pay');
 Route::post('/store/payment/success', 'StoreController@success');
 Route::post('/store/payment/cancel', 'StoreController@cancel');
+Route::get('/api', 'FriendController');
 
 Auth::routes([
     'register' => false,
