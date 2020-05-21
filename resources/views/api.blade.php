@@ -19,6 +19,7 @@
 
         <div class="flex-center position-ref full-height">
         @include('header')
+        <p><a href="/bread">ankeet</a>, mille kaudu sisestasin andmed API kaudu väljastamiseks</p>
         @forelse ($friends as $friend)
             @foreach ($friend as $name => $responses)
                 <strong>{{$name}}</strong> <br> 
